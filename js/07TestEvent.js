@@ -38,5 +38,6 @@ form.addEventListener("submit", (event) => {
   const emailValue = inputEmail.value;
   console.log(`Formulaire soumis. Valeur de l'email :`, emailValue);
   // Ajouter un message dans un paragraphe qui indique que l'inscription à la newsletter avec l'email donné a bien été prise en compte
+  createMarkup("p", document.body, `Inscription à la newsletter via votre email ${emailValue} bien reçue`);
 
 })
