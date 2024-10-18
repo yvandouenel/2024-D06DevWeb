@@ -10,6 +10,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../css/calendar.css" />
   </head>
   <body>
     <div class="container">
@@ -18,25 +19,116 @@
         <a class="btn btn-success" href="">+ Ajouter un projet</a>
         <a class="btn btn-secondary" href="">Voir la liste des projets</a>
       </nav>
-      <section id="calendar" class="mt-5">
+      <section id="legend" class="d-flex gap-3 mt-5">
+        <p class="text-success"><span>------</span>Tâche planifiée</p>
+        <p class="text-danger"><span>------</span>Tâche réelle</p>
+      </section>
+      <section id="calendar">
         <section class="row">
           <div class="col-2"></div>
           <div class="col border-1">
             <h2>Lundi</h2>
             <section class="tasks d-flex"></section>
           </div>
-          <div class="col">Mardi</div>
-          <div class="col">Mercredi</div>
-          <div class="col">Jeudi</div>
-          <div class="col">Vendredi</div>
+          <div class="col"><h2>Mardi</h2></div>
+          <div class="col"><h2>Mercredi</h2></div>
+          <div class="col"><h2>Jeudi</h2></div>
+          <div class="col"><h2>Vendredi</h2></div>
         </section>
         <section class="row">
-          <div class="col-2">Lilya</div>
+          <div class="col-2"><h2>Lilya</h2></div>
           <div class="col">
-            <section class="tasks border">
+            <section class="tasks border border-secondary">
               <div
-                class="task border border-success"
-                style="width: 100%"
+                class="task task-planified border border-success"
+                style=""
+                title="Système d'authentification - projet DigiCampus"
+              >
+                Auth
+              </div>
+              <div
+                class="task border border-danger"
+                style="width: 40%; margin-left: 20%"
+                title="Maquettage - projet Typo"
+              >
+                Maq.
+              </div>
+            </section>
+          </div>
+          <div class="col">
+            <section class="tasks border border-secondary">
+              <div
+                class="task task-planified border border-success text-truncate"
+                title="Système d'authentification - projet DigiCampus"
+              >
+                Auth
+              </div>
+              <div
+                class="task task-real border border-danger one after-five text-truncate"
+                title="Développement php - projet Typo"
+              >
+                Dev php
+              </div>
+            </section>
+          </div>
+          <div class="col">
+            <section class="tasks border border-secondary">
+              <div
+                class="task task-planified four border border-success text-truncate"
+                title="Mise en place du MVC - projet DigiCampus"
+              >
+                MVC
+              </div>
+              <div
+                class="task task-real border border-danger four after-four text-truncate"
+                title="Développement php - projet Typo"
+              >
+                Dev php
+              </div>
+            </section>
+          </div>
+          <div class="col"></div>
+          <div class="col">
+            <section class="tasks border border-secondary">
+              <div
+                class="task task-planified border border-success text-truncate"
+                title="Système d'authentification - projet DigiCampus"
+              >
+                Auth
+              </div>
+              <div
+                class="task task-real border border-danger one after-five text-truncate"
+                title="Développement php - projet Typo"
+              >
+                Dev php
+              </div>
+            </section>
+          </div>
+        </section>
+        <section class="row mt-4">
+          <div class="col-2"><h2>Sébastien</h2></div>
+
+          <div class="col">
+            <section class="tasks border border-secondary">
+              <div
+                class="task task-planified four border border-success text-truncate"
+                title="Mise en place du MVC - projet DigiCampus"
+              >
+                MVC
+              </div>
+              <div
+                class="task task-real border border-danger four after-four text-truncate"
+                title="Développement php - projet Typo"
+              >
+                Dev php
+              </div>
+            </section>
+          </div>
+          <div class="col">
+            <section class="tasks border border-secondary">
+              <div
+                class="task task-planified border border-success"
+                style=""
                 title="Système d'authentification - projet DigiCampus"
               >
                 Auth
@@ -51,9 +143,38 @@
             </section>
           </div>
           <div class="col"></div>
-          <div class="col"></div>
-          <div class="col"></div>
-          <div class="col"></div>
+          <div class="col">
+            <section class="tasks border border-secondary">
+              <div
+                class="task task-planified border border-success text-truncate"
+                title="Système d'authentification - projet DigiCampus"
+              >
+                Auth
+              </div>
+              <div
+                class="task task-real border border-danger one after-five text-truncate"
+                title="Développement php - projet Typo"
+              >
+                Dev php
+              </div>
+            </section>
+          </div>
+          <div class="col">
+            <section class="tasks border border-secondary">
+              <div
+                class="task task-planified border border-success text-truncate"
+                title="Système d'authentification - projet DigiCampus"
+              >
+                Auth
+              </div>
+              <div
+                class="task task-real border border-danger one after-five text-truncate"
+                title="Développement php - projet Typo"
+              >
+                Dev php
+              </div>
+            </section>
+          </div>
         </section>
       </section>
     </div>

@@ -1,0 +1,41 @@
+.task {
+  margin: 2px;
+  background-color: beige;
+}
+.task-planified {
+  width: calc(100%-2px);
+}
+.one {
+  width: calc(1 / 8 * 100% - 2px) !important;
+}
+.two {
+  width: calc(2 / 8 * 100% - 2px) !important;
+}
+.three {
+  width: calc(3 / 8 * 100% - 2px) !important;
+}
+.four {
+  width: calc(4 / 8 * 100% - 2px) !important;
+}
+.five {
+  width: calc(5 / 8 * 100% - 2px) !important;
+}
+.six {
+  width: calc(6 / 8 * 100% - 2px) !important;
+}
+.seven {
+  width: calc(7 / 8 * 100% - 2px) !important;
+}
+.eight {
+  width: calc(8 / 8 * 100% - 2px) !important;
+}
+
+.after-two {
+  margin-left: calc(2 / 8 * 100% - 2px) !important;
+}
+.after-four {
+  margin-left: calc(4 / 8 * 100% - 2px) !important;
+}
+.after-five {
+  margin-left: calc(5 / 8 * 100% - 2px) !important;
+}
