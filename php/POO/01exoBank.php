@@ -11,6 +11,7 @@ class BankAccount
   {
     echo "Vous avez déposé $deposit € " . PHP_EOL;
     $this->balance += $deposit;
+    return $this;
   }
   // Retirer de l'argent
   public function withDraw($amount)
@@ -24,3 +25,7 @@ class BankAccount
     return $this;
   }
 }
+
+$ba = new BankAccount(1000, 200);
+// Je veux retirer de l'argent et afficher le solde
+echo $ba->withDraw(300)->getBalance();
