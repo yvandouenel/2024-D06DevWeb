@@ -3,6 +3,7 @@ class Person
 {
   // Attributs
   public $name;
+  public $email;
 
   // Méthodes
   public function mange()
