@@ -2,6 +2,8 @@
 class BankAccount
 {
   public function __construct(private float $balance, private int $overdraft = 0) {}
+
+
   public function getBalance(): float
   {
     return $this->balance;
