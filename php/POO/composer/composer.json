@@ -1,0 +1,20 @@
+{
+  "name": "diginamic/poo",
+  "description": "test d'autoload avec composer",
+  "type": "project",
+  "license": "GNU",
+  "autoload": {
+    "psr-4": {
+      "Diginamic\\Poo\\": "src/",
+      "Entities\\": "entities/"
+    }
+  },
+  "authors": [
+    {
+      "name": "yvandouenel",
+      "email": "y.douenel@coopernet.fr"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {}
+}
