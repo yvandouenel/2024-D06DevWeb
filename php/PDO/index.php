@@ -4,22 +4,27 @@ try {
   $dbh = new PDO('mysql:host=localhost;dbname=banque;charset=utf8', 'root');
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
-  $sql = 'select * from client';
-  $where = ";";
+
 
   // Récupération des paramètres de recherche via la super globale $_POST
   // teste si le client a bien envoyé une valeur qui correspond à la clé "name"
-  if (isset($_POST["lastname"])) {
-    $where = " WHERE nom LIKE '%" . $_POST["lastname"] . "%';";
-  }
-  echo $sql . $where;
-  $req = $dbh->query($sql . $where);
+  // Attention ce code est vulnérable aux injections sql du type '; drop table client;
+  if (!isset($_POST['lastname']) || empty($_POST['lastname'])) {
+    $sql = 'SELECT * FROM client;';
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
 
-  // fetch renvoie les enregistrements un par un
-  // tant qu'il (while) y a un enregistrement, on reste dans la boucle
-  while ($record = $req->fetch(PDO::FETCH_OBJ)) {
-    // $record utilisé via FETCH_OBJ est un objet qui permet d'accéder aux données 
-    // champ par champ avec la syntaxe $record->nom_du_champ
+    $results = $sth->fetchAll(PDO::FETCH_OBJ);
+  } else {
+    $sql = 'SELECT * FROM client WHERE nom LIKE :searchTerm';
+    $sth = $dbh->prepare($sql);
+    $sth->execute(['searchTerm' => '%' . $_POST['lastname'] . '%']);
+
+    $results = $sth->fetchAll(PDO::FETCH_OBJ);
+  }
+
+
+  foreach ($results as $record) {
     echo $record->nom;
     echo $record->prenom;
   }
