@@ -1,0 +1,19 @@
+{
+    "name": "diginamic/pdo",
+    "type": "project",
+    "require": {
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Diginamic\\Pdo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yvandouenel",
+            "email": "y.douenel@coopernet.fr"
+        }
+    ]
+}

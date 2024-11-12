@@ -1,35 +1,20 @@
 <?php
 
+use Diginamic\Pdo\PDODiginamic;
+
+// Il faut charger l'autoload
+include_once 'vendor/autoload.php';
+
+
 try {
+  // Instanciation de PDODiginamic
+  $pdoDiginamic = new PDODiginamic();
 
-  // instanciation de PDO
-  $dbh = new PDO('mysql:host=localhost;dbname=banque;charset=utf8', 'root');
-  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+  // Appel de la méthode queryLastName et affectation des résultats à $results
+  $results = $pdoDiginamic->queryLastname();
 
-
-
-  // Récupération des paramètres de recherche via la super globale $_POST
-  // teste si le client a bien envoyé une valeur qui correspond à la clé "name"
-  // Attention ce code est vulnérable aux injections sql du type '; drop table client;
-  if (!isset($_POST['lastname']) || empty($_POST['lastname'])) {
-    $sql = 'SELECT * FROM client;';
-    $pdoStatement = $dbh->prepare($sql);
-    $pdoStatement->execute();
-
-    $results = $pdoStatement->fetchAll(PDO::FETCH_OBJ);
-  } else {
-    $sql = 'SELECT * FROM client WHERE nom LIKE :searchTerm';
-    $pdoStatement = $dbh->prepare($sql);
-    $pdoStatement->execute(['searchTerm' => '%' . $_POST['lastname'] . '%']);
-
-    $results = $pdoStatement->fetchAll(PDO::FETCH_OBJ);
-  }
-
-
-  foreach ($results as $record) {
-    echo $record->nom;
-    echo $record->prenom;
-  }
+  // Affichage des résultats
+  $pdoDiginamic->diplayResults($results);
 } catch (PDOException $e) {
   echo "Pb de connexion à la base de données ", $e->getMessage();
 }
