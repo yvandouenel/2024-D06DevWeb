@@ -6,7 +6,7 @@ class FizzBuzzTest extends TestCase
 {
   public function testFizzBuzz()
   {
-    // assertion
+    // assertions
     $this->assertSame(1, $this->FizzBuzz(1));
     $this->assertSame(2, $this->FizzBuzz(2));
     $this->assertSame("Fizz", $this->FizzBuzz(3));
