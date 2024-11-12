@@ -1,0 +1,21 @@
+{
+    "name": "diginamic/kata",
+    "description": "Premiers katas",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Diginamic\\Kata\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yvandouenel",
+            "email": "y.douenel@coopernet.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
