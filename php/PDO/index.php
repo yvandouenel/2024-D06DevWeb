@@ -1,6 +1,8 @@
 <?php
 
 try {
+
+  // instanciation de PDO
   $dbh = new PDO('mysql:host=localhost;dbname=banque;charset=utf8', 'root');
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
@@ -11,16 +13,16 @@ try {
   // Attention ce code est vulnérable aux injections sql du type '; drop table client;
   if (!isset($_POST['lastname']) || empty($_POST['lastname'])) {
     $sql = 'SELECT * FROM client;';
-    $sth = $dbh->prepare($sql);
-    $sth->execute();
+    $pdoStatement = $dbh->prepare($sql);
+    $pdoStatement->execute();
 
-    $results = $sth->fetchAll(PDO::FETCH_OBJ);
+    $results = $pdoStatement->fetchAll(PDO::FETCH_OBJ);
   } else {
     $sql = 'SELECT * FROM client WHERE nom LIKE :searchTerm';
-    $sth = $dbh->prepare($sql);
-    $sth->execute(['searchTerm' => '%' . $_POST['lastname'] . '%']);
+    $pdoStatement = $dbh->prepare($sql);
+    $pdoStatement->execute(['searchTerm' => '%' . $_POST['lastname'] . '%']);
 
-    $results = $sth->fetchAll(PDO::FETCH_OBJ);
+    $results = $pdoStatement->fetchAll(PDO::FETCH_OBJ);
   }
 
 
