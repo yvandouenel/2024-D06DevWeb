@@ -1,4 +1,5 @@
 <?php
+echo phpinfo();
 
 use Diginamic\Pdo\PDODiginamic;
 
