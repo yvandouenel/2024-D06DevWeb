@@ -1,33 +1,12 @@
 <?php
+require_once 'comments.php';
 
-/**
- * Pour rappel, le format json est composé de clés et de valeurs
- * Les caractères à utiliser sont : 
- *  {}
- *  ""
- *  :
- *  ,
- *  []
- */
+if (isset($_POST["name"]) &&  isset($_POST["comment"])) {
+  addComment($_POST['name'], $_POST['comment']);
 
+  // Récupération des commentaires
+  $comments = getAllComments();
 
-if (isset($_POST['comment'])) {
-  $string = '{"' . $_POST['name'] . '" : "' . $_POST["comment"] . '"},' . PHP_EOL;
-  echo $string;
-  file_put_contents('comments.json', $string, FILE_APPEND) . PHP_EOL;
-  $json = file_get_contents('comments.json');
-  echo $json;
+  // affichage des commentaires
+  dumpAllComments($comments);
 }
-
-// Vérifie si le fichier json  existe déjà
-
-// Si le fichier n'existe pas
-    // Créer un tableau associatif avec les données récupérées via le formulaire
-    // Utiliser json_encode pour encoder le tableau en json 
-    // Utiliser fopen et fwrite pour écrire le json dans le fichier (cf support de cours "Travailler avec des fichiers dans le php impératif)
-
-// Si le fichier existe, 
-    // récupérer les données json du fichier et les transformer en tableau associatif
-    // Ajouter une valeur à ce tableau 
-    // Utiliser json_encode pour encoder le tableau en json 
-    // Utiliser fopen et fwrite pour écrire le json dans le fichier (cf support de cours "Travailler avec des fichiers dans le php impératif)
