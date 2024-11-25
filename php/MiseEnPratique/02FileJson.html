@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test écriture JSON</title>
+  </head>
+  <body>
+    <form method="POST" action="./02FileJson.php">
+      <label for="name">Votre nom :</label>
+      <input
+        name="name"
+        type="text"
+        placeholder="Saisissez votre nom"
+        id="name"
+        required
+      /><br />
+      <label for="comment">Commentaire :</label>
+      <textarea id="comment" name="comment" required></textarea>
+      <input type="submit" value="Soumettre" />
+    </form>
+  </body>
+</html>
