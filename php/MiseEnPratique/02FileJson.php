@@ -20,11 +20,14 @@ if (isset($_POST['comment'])) {
 }
 
 // Vérifie si le fichier json  existe déjà
+
+// Si le fichier n'existe pas
     // Créer un tableau associatif avec les données récupérées via le formulaire
     // Utiliser json_encode pour encoder le tableau en json 
     // Utiliser fopen et fwrite pour écrire le json dans le fichier (cf support de cours "Travailler avec des fichiers dans le php impératif)
 
-// Si le fichier existe, le récupérer et le transformer en tableau
+// Si le fichier existe, 
+    // récupérer les données json du fichier et les transformer en tableau associatif
     // Ajouter une valeur à ce tableau 
     // Utiliser json_encode pour encoder le tableau en json 
     // Utiliser fopen et fwrite pour écrire le json dans le fichier (cf support de cours "Travailler avec des fichiers dans le php impératif)
