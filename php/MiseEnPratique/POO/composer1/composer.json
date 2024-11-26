@@ -1,0 +1,16 @@
+{
+    "name": "douenel/poo",
+    "type": "projet",
+    "autoload": {
+        "psr-4": {
+            "Douenel\\Poo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yvandouenel",
+            "email": "y.douenel@coopernet.fr"
+        }
+    ],
+    "require": {}
+}
