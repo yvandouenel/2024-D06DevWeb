@@ -10,6 +10,11 @@ const ROUTES = [
         "METHOD" => "index",
         "HTTP_METHODS" => "GET",
     ],
+    "/user" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "showUser",
+        "HTTP_METHODS" => "GET",
+    ],
     "/home" => [
         "CONTROLLER" => "HomeController",
         "METHOD" => "home",
