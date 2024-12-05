@@ -11,8 +11,10 @@ class UsersController extends AbstractController
     public final function index(): void
     {
         $userRepo = new Repository(User::class);
-        $users = $userRepo->customQuery('SELECT * FROM user',);
-        // $users = $userRepo->fetchAll();
+        $users = $userRepo->customQuery('SELECT * FROM user');
+
+        /* $users = $userRepo->getAll();
+        dd($users); */
         $this->render('home/users.php', ["users" => $users]);
     }
     /**
