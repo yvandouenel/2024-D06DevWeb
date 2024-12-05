@@ -43,7 +43,7 @@ class AbstractController
 
 
             // Encode les données en JSON et les envoie au client.
-            //echo json_encode($data);
+            echo json_encode($data);
 
 
             // Termine l'exécution du script pour éviter d'envoyer des données supplémentaires.

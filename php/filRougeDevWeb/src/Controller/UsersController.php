@@ -29,5 +29,21 @@ class UsersController extends AbstractController
 
         $this->render('home/user.php', ["user" => $user]);
     }
+
+    public final function getApiUsers(): void
+    {
+        $userRepo = new Repository(User::class);
+        $users = $userRepo->customQuery('SELECT * FROM user');
+        // Renvoie au format json
+        $this->json($users);
+    }
+
+    public final function dynamicalUsers(): void
+    {
+        /* Dans un premier temps, le serveur me renvoie un template sans donnée */
+        $userRepo = new Repository(User::class);
+        $users = $userRepo->customQuery('SELECT * FROM user');
+        $this->render('users/dynamicalUsers.php', ["users" => $users]);
+    }
     // Le paramètres de $_GET peuvent etre récupérés via les paramètres de la méthode. Attention
 }

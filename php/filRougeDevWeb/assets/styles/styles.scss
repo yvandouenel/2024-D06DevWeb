@@ -17,6 +17,24 @@ h1 {
   background-color: #EEEEEE;
 }
 
+/* Boutons */
+.btn {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+
+  &:hover {
+    background-color: #FF3333;
+    cursor: pointer;
+  }
+}
+
 /** Grid **/
 .container {
 

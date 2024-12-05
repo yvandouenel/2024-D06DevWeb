@@ -10,6 +10,16 @@ const ROUTES = [
         "METHOD" => "index",
         "HTTP_METHODS" => "GET",
     ],
+    "/dynamicalusers" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "dynamicalUsers",
+        "HTTP_METHODS" => "GET",
+    ],
+    "/api/users" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "getApiUsers",
+        "HTTP_METHODS" => "GET",
+    ],
     "/user" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "showUser",
