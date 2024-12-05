@@ -6,6 +6,27 @@ h1 {
   display: flex;
 }
 
+
+
+.border-1 {
+  border: 1px solid grey;
+  padding: 0 20px;
+}
+
+.altern-grey section:nth-child(odd) {
+  background-color: #EEEEEE;
+}
+
+/** Grid **/
+.container {
+
+  /* Attention à connaitre les media queries */
+  @media screen and (min-width: 780px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
 .gap-2 {
   gap: 2rem;
 }
