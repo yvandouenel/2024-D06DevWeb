@@ -45,5 +45,17 @@ class UsersController extends AbstractController
         $users = $userRepo->customQuery('SELECT * FROM user');
         $this->render('users/dynamicalUsers.php', ["users" => $users]);
     }
+
+    public final function deleteApiUser(): void
+    {
+        // Récupération de l'id de l'élément à supprimer
+        if (isset($_GET["id"])) {
+            $userRepo = new Repository(User::class);
+            $userRepo->delete($_GET["id"]);
+            $this->json(["delete" => "true"]);
+        } else {
+            $this->json(["delete" => "false"]);
+        }
+    }
     // Le paramètres de $_GET peuvent etre récupérés via les paramètres de la méthode. Attention
 }

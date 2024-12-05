@@ -18,7 +18,7 @@ export default class Api {
   static deleteUserFromApi(userId) {
     console.log(`dans deleteUserFromApi`, userId);
     // On va utiliser la méthode fetch
-    /* fetch(`/api/delete/user?id=${userId}`)
+    fetch(`/api/delete/user?id=${userId}`)
       .then(response => {
         console.log(`statut de la réponse`, response.status);
         return response.json();
@@ -28,6 +28,6 @@ export default class Api {
       })
       .catch(error => {
         console.log(`Erreur attrapée `, error);
-      }) */
+      })
   }
 }
