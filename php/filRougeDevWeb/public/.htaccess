@@ -1,0 +1,27 @@
+
+Options All -Indexes
+
+<IfModule mod_rewrite.c>
+  # Active le module de réécriture d'URL
+  RewriteEngine On
+
+  # Cette condition est utilisée pour obtenir le chemin de base de l'application.
+  # Elle capture tout ce qui précède le dernier segment de l'URL.
+  RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+
+  # Cette règle ne fait rien en soi, mais elle définit une variable d'environnement "BASE"
+  # qui contient le chemin de base de l'application.
+  RewriteRule ^(.*) - [E=BASE:%1]
+
+  # Cette condition vérifie si la requête n'est pas pour un répertoire existant
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Cette condition vérifie si la requête n'est pas pour un fichier existant
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  # Si les deux conditions ci-dessus sont vraies (c'est-à-dire que la requête n'est pas pour un fichier ou un répertoire existant),
+  # alors la requête est réécrite pour être traitée par index.php.
+  # L'option QSA signifie "Query String Append", ce qui signifie que les paramètres de la requête d'origine sont conservés.
+  # L'option L signifie "Last", ce qui signifie que si cette règle est appliquée, aucune autre règle ne sera traitée.
+  RewriteRule ^ index.php [QSA,L]
+</IfModule>
