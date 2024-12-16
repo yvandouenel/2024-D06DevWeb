@@ -1,7 +1,14 @@
-export default class Todolist {
+import TaskInterface from "../interfaces/TaskInterface";
+import Component from "../utils/Component";
+import Task from "./Task";
+
+export default class Todolist extends Component {
   title: string;
-  constructor(title: string) {
+  tasks: TaskInterface[];
+  constructor(title: string, tasks: TaskInterface[]) {
+    super();
     this.title = title;
+    this.tasks = tasks;
 
     // Appel de render dès la construction
     this.render();
@@ -9,31 +16,15 @@ export default class Todolist {
   // Méthode qui permet de créer une section avec un h2 qui reprendra le titre de la todolist
   render() {
     // création d'une section qui entoure la todolist
-    this.createMarkup("section", document.body);
+    const section = this.createMarkup("section", document.body);
 
     // Création d'une balise h2 qui reprend le titre de la todoList et qui le place dans la section
-  }
-  /**
-   * Crée un élément du dom, lui ajoute du texte, le place comme dernier
-   * enfant de parent et ajoute un attribut en utilisant le paramètre attributes
-   * @param {String} markup_name
-   * @param {domElement} parent
-   * @param {String} text
-   * @param {Object} attributes
-   * @returns domElement
-   */
-  createMarkup(
-    markupname: string,
-    parent: HTMLElement,
-    text: string = "",
-    attributes: Record<string, any> = {}
-  ) {
-    const markup = document.createElement(markupname);
-    markup.textContent = text;
-    parent.appendChild(markup);
-    for (let key in attributes) {
-      markup.setAttribute(key, attributes[key]);
-    }
-    return markup;
+    this.createMarkup("h2", section, this.title, { id: "title-todolist" });
+
+    // Création des balises "article" à partir de la propriété tasks
+    // Attention, vous êtes obligés de passer par la création d'un composant class "Task"
+    this.tasks.forEach((task: TaskInterface) => {
+      new Task(task.id, task.title, task.description, task.done);
+    });
   }
 }
