@@ -52,4 +52,40 @@
     const p1 = new People("Christophe", "Arnaud");
     // Appelle de la méthode
     p1.presentMySelf();
+    class NameChecker {
+        check(s) {
+            return s.toLowerCase() === "ok";
+        }
+        doubleCheck(msg) {
+            return msg.toUpperCase() === "ok";
+        }
+    }
+    const nm = new NameChecker();
+    console.log(nm.check("ok"));
+    const dependencies = { name: "Bob", age: "24" };
+    function updateTodo(todo, fieldsToUpdate) {
+        // spread operator
+        return Object.assign(Object.assign({}, todo), fieldsToUpdate);
+    }
+    const todo1 = {
+        title: "organize desk",
+        description: "clear clutter",
+    };
+    const todo2 = updateTodo(todo1, { description: "Test" });
+    console.log(todo2);
+    const objectByDefault = {
+        name: "Toto",
+        lastname: "Durand",
+    };
+    const objPartial = {
+        lastname: "Dupond",
+        age: 12,
+    };
+    const finalObj = Object.assign(Object.assign({}, objectByDefault), objPartial);
+    console.log(`finalObj`, finalObj);
+    const todo = {
+        title: "Clean room",
+        completed: false,
+        createdAt: 1615544252770,
+    };
 }

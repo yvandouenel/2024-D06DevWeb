@@ -74,4 +74,65 @@
 
   // Appelle de la méthode
   p1.presentMySelf();
+
+  interface Checkable {
+    check(name: string): boolean;
+    doubleCheck(name: string): boolean;
+  }
+
+  class NameChecker implements Checkable {
+    check(s: string) {
+      return s.toLowerCase() === "ok";
+    }
+    doubleCheck(msg: string) {
+      return msg.toUpperCase() === "ok";
+    }
+  }
+  const nm = new NameChecker();
+  console.log(nm.check("ok"));
+
+  const dependencies: Record<string, string> = { name: "Bob", age: "24" };
+
+  // Partial
+  interface Todo {
+    title: string;
+    description: string;
+  }
+  function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>) {
+    // spread operator
+    return { ...todo, ...fieldsToUpdate };
+  }
+  const todo1: Todo = {
+    title: "organize desk",
+    description: "clear clutter",
+  };
+  const todo2 = updateTodo(todo1, { description: "Test" });
+  console.log(todo2);
+
+  const objectByDefault = {
+    name: "Toto",
+    lastname: "Durand",
+  };
+  const objPartial = {
+    lastname: "Dupond",
+    age: 12,
+  };
+  const finalObj = { ...objectByDefault, ...objPartial };
+  console.log(`finalObj`, finalObj);
+
+  // Omit
+  interface TodoList {
+    title: string;
+    description: string;
+    completed: boolean;
+    createdAt: number;
+  }
+
+  type TodoPreview = Omit<TodoList, "description">;
+
+  const todo: TodoPreview = {
+    title: "Clean room",
+    completed: false,
+    createdAt: 1615544252770,
+  };
 }
