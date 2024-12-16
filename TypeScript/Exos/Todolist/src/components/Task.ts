@@ -26,6 +26,6 @@ export default class Task extends Component implements TaskInterface {
   render() {
     // Création d'une balise article
     // Création d'une balise h3 qui reprend le titre de la tâche
-    // case à cocher pour montrer si la tâche est faite
+    // Case à cocher pour montrer si la tâche est faite
   }
 }
