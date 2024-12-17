@@ -5,18 +5,23 @@ import Task from "./Task";
 export default class Todolist extends Component {
   title: string;
   tasks: TaskInterface[];
-  constructor(title: string, tasks: TaskInterface[]) {
+  parentElement: HTMLElement;
+  constructor(
+    title: string,
+    tasks: TaskInterface[],
+    parentElement: HTMLElement
+  ) {
     super();
     this.title = title;
     this.tasks = tasks;
-
+    this.parentElement = parentElement;
     // Appel de render dès la construction
     this.render();
   }
   // Méthode qui permet de créer une section avec un h2 qui reprendra le titre de la todolist
   render() {
     // création d'une section qui entoure la todolist
-    const section = this.createMarkup("section", document.body);
+    const section = this.createMarkup("section", this.parentElement);
 
     // Création d'une balise h2 qui reprend le titre de la todoList et qui le place dans la section
     this.createMarkup("h2", section, this.title, { id: "title-todolist" });

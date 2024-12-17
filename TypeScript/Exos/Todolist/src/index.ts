@@ -17,5 +17,5 @@ const tasks: TaskInterface[] = [
     done: false,
   },
 ];
-const todolist1 = new Todolist("Première Todolist", tasks);
-console.log(`todolist1.title`, todolist1.title);
+const parentElt = document.getElementById("root");
+const todolist1 = new Todolist("Première Todolist", tasks, parentElt);
