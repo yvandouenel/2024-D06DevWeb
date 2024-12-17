@@ -2,6 +2,7 @@
 
 import TaskInterface from "../interfaces/TaskInterface";
 import Component from "../utils/Component";
+import { atRule } from "./../../node_modules/postcss/lib/postcss.d";
 
 export default class Task extends Component implements TaskInterface {
   id: string;
@@ -35,7 +36,7 @@ export default class Task extends Component implements TaskInterface {
   render() {
     // Création d'une balise article
     const articleElt = this.createMarkup("article", this.parentElement, "", {
-      class: "d-flex gap-4",
+      class: "d-flex gap-4 my-3",
     });
 
     // Création d'une balise h3 qui reprend le titre de la tâche
@@ -47,9 +48,14 @@ export default class Task extends Component implements TaskInterface {
     checkbox.checked = this.done;
 
     // Créer un bouton "supprimer"
+    const deleteElt = this.createMarkup("button", articleElt, "Supprimer", {
+      class: "btn btn-danger",
+    });
 
     return {
-      checkbox: checkbox,
+      checkbox,
+      deleteElt,
+      articleElt,
     };
   }
   handleEvents() {
@@ -61,5 +67,10 @@ export default class Task extends Component implements TaskInterface {
     });
 
     // Gérer le click sur le bouton supprimer (demander confirmation - utiliser confirm) puis supprimer l'élément du DOM
+    this.domElts.deleteElt.addEventListener("click", () => {
+      if (confirm(`Voulez vous supprimer la tâche ${this.title}`)) {
+        this.domElts.articleElt.remove();
+      }
+    });
   }
 }
