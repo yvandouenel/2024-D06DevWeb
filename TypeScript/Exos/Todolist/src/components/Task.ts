@@ -1,8 +1,8 @@
 // Un composant est une classe qui a des propriétés et qui est capable de construire les éléments du DOM pour rendre visibles ces mêmes propriétés
 
 import TaskInterface from "../interfaces/TaskInterface";
+import TaskService from "../services/TaskService";
 import Component from "../utils/Component";
-import { atRule } from "./../../node_modules/postcss/lib/postcss.d";
 
 export default class Task extends Component implements TaskInterface {
   id: string;
@@ -64,12 +64,16 @@ export default class Task extends Component implements TaskInterface {
     checkbox.addEventListener("change", () => {
       this.done = checkbox.checked;
       console.log(`this.done`, this.done);
+      // Faire appel au service pour modifier la tâche sur le serveur (json-server)
     });
 
     // Gérer le click sur le bouton supprimer (demander confirmation - utiliser confirm) puis supprimer l'élément du DOM
     this.domElts.deleteElt.addEventListener("click", () => {
       if (confirm(`Voulez vous supprimer la tâche ${this.title}`)) {
         this.domElts.articleElt.remove();
+        // Faire appel au service pour supprimer la tâche sur le serveur (json-server)
+        TaskService.deleteTask(this.id);
+        // Si le delete ne fonctionne pas, on revient à la version précédente de la liste
       }
     });
   }
