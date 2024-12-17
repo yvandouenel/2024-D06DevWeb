@@ -22,7 +22,7 @@ export default class TaskService {
   }
   static deleteTask(id: string): Promise<TaskInterface> {
     // Utilisation de la fonction fetch qui utilise les promesses
-    return fetch(TaskService.endpoint + "/" + id, {
+    return fetch(TaskService.endpoint + "/ezerzer" + id, {
       method: "DELETE",
     })
       .then((response) => {

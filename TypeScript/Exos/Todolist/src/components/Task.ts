@@ -12,18 +12,12 @@ export default class Task extends Component implements TaskInterface {
   parentElement: HTMLElement;
   domElts: Record<string, HTMLElement>;
 
-  constructor(
-    id: string,
-    title: string,
-    description: string,
-    done: boolean = false,
-    parentElement: HTMLElement
-  ) {
+  constructor(task: TaskInterface, parentElement: HTMLElement) {
     super();
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.done = done;
+    this.id = task.id;
+    this.title = task.title;
+    this.description = task.description;
+    this.done = task.done;
 
     this.parentElement = parentElement;
 
@@ -73,7 +67,7 @@ export default class Task extends Component implements TaskInterface {
         this.domElts.articleElt.remove();
         // Faire appel au service pour supprimer la tâche sur le serveur (json-server)
         TaskService.deleteTask(this.id);
-        // Si le delete ne fonctionne pas, on revient à la version précédente de la liste
+        // Si le delete ne fonctionne pas, on revient à la version précédente de la liste en donnant un message d'erreur
       }
     });
   }
