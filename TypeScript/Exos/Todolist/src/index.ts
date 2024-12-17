@@ -3,6 +3,9 @@ import TaskInterface from "./interfaces/TaskInterface";
 import "./sass/style.scss";
 console.log(`Dans index.ts`);
 
+// On peut considérer que tasks représente l'état de l'application mais il va falloir mettre en place
+// un mécanisme pour que chaque fois que ce état est modifié, cela reconstruise l'application
+
 const tasks: TaskInterface[] = [
   {
     id: "1",

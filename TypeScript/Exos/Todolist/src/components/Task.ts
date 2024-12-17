@@ -9,6 +9,7 @@ export default class Task extends Component implements TaskInterface {
   description?: string;
   done: boolean;
   parentElement: HTMLElement;
+  domElts: Record<string, HTMLElement>;
 
   constructor(
     id: string,
@@ -24,12 +25,18 @@ export default class Task extends Component implements TaskInterface {
     this.done = done;
 
     this.parentElement = parentElement;
-    // Appel de render
-    this.render();
+
+    // Appel de render qui retourne un objet littéral (clé/valeur) dont les valeurs sont de type HTMLElement
+    this.domElts = this.render();
+
+    // Gestion des événements
+    this.handleEvents();
   }
   render() {
     // Création d'une balise article
-    const articleElt = this.createMarkup("article", this.parentElement);
+    const articleElt = this.createMarkup("article", this.parentElement, "", {
+      class: "d-flex gap-4",
+    });
 
     // Création d'une balise h3 qui reprend le titre de la tâche
     const h3Elt = this.createMarkup("h3", articleElt, this.title);
@@ -38,5 +45,21 @@ export default class Task extends Component implements TaskInterface {
       type: "checkbox",
     }) as HTMLInputElement;
     checkbox.checked = this.done;
+
+    // Créer un bouton "supprimer"
+
+    return {
+      checkbox: checkbox,
+    };
+  }
+  handleEvents() {
+    // Accès à checkbox en utilisant une assertion pour indiquer l'on a affaire à un input
+    const checkbox = this.domElts.checkbox as HTMLInputElement;
+    checkbox.addEventListener("change", () => {
+      this.done = checkbox.checked;
+      console.log(`this.done`, this.done);
+    });
+
+    // Gérer le click sur le bouton supprimer (demander confirmation - utiliser confirm) puis supprimer l'élément du DOM
   }
 }
