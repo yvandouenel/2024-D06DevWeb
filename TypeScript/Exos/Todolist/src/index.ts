@@ -1,5 +1,6 @@
 import Todolist from "./components/Todolist";
 import TaskInterface from "./interfaces/TaskInterface";
+import "./sass/style.scss";
 console.log(`Dans index.ts`);
 
 const tasks: TaskInterface[] = [
@@ -7,7 +8,7 @@ const tasks: TaskInterface[] = [
     id: "1",
     title: "Faire la vaisselle",
     description: "Et que ça saute",
-    done: false,
+    done: true,
   },
   {
     id: "2",

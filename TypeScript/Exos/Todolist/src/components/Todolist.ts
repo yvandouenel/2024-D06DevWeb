@@ -24,7 +24,7 @@ export default class Todolist extends Component {
     // Création des balises "article" à partir de la propriété tasks
     // Attention, vous êtes obligés de passer par la création d'un composant class "Task"
     this.tasks.forEach((task: TaskInterface) => {
-      new Task(task.id, task.title, task.description, task.done);
+      new Task(task.id, task.title, task.description, task.done, section);
     });
   }
 }
