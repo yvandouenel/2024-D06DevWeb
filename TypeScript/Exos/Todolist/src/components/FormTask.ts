@@ -63,9 +63,17 @@ export default class FormTask extends Component {
 
       // Récupération des données soumise via une instance de formdata
       const formData = new FormData(this.domElts.formElt as HTMLFormElement);
-      console.log(`Titre du formData : `, formData.get("title"));
+      const partialTask = {
+        description: "",
+        done: false,
+        ...Object.fromEntries(formData),
+      };
+      console.log(`partialTask : `, partialTask);
 
       // Créer un objet task mais sans id (il faudra donc créer une interface pour cela)
+      TaskService.getInstance().createTask(
+        partialTask as Omit<TaskInterface, "id">
+      );
 
       // Ajouter l'objet via le service TaskService
 
