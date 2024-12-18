@@ -22,7 +22,7 @@ export default class TaskService {
   }
   static deleteTask(id: string): Promise<TaskInterface> {
     // Utilisation de la fonction fetch qui utilise les promesses
-    return fetch(TaskService.endpoint + "/ezerzer" + id, {
+    return fetch(TaskService.endpoint + "/qsdf" + id, {
       method: "DELETE",
     })
       .then((response) => {
@@ -33,11 +33,8 @@ export default class TaskService {
           throw new Error("Erreur du serveur. Statut : " + response.status);
       })
       .then((data) => {
-        console.log(`Data supprimée : `, data);
+        console.log(`Task supprimée : `, data);
         return data;
-      })
-      .catch((error) => {
-        console.error(`Erreur attrapée dans deleteTask : ${error}`);
       });
   }
 }

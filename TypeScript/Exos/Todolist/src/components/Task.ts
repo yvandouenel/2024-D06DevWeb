@@ -1,8 +1,9 @@
 // Un composant est une classe qui a des propriétés et qui est capable de construire les éléments du DOM pour rendre visibles ces mêmes propriétés
 
+import Component from "../utils/Component";
+import ErrorService from "../services/ErrorService";
 import TaskInterface from "../interfaces/TaskInterface";
 import TaskService from "../services/TaskService";
-import Component from "../utils/Component";
 
 export default class Task extends Component implements TaskInterface {
   id: string;
@@ -63,11 +64,39 @@ export default class Task extends Component implements TaskInterface {
 
     // Gérer le click sur le bouton supprimer (demander confirmation - utiliser confirm) puis supprimer l'élément du DOM
     this.domElts.deleteElt.addEventListener("click", () => {
-      if (confirm(`Voulez vous supprimer la tâche ${this.title}`)) {
-        this.domElts.articleElt.remove();
+      if (
+        confirm(
+          `Voulez vous supprimer la tâche ${this.title} qui a pour id ${this.id}`
+        )
+      ) {
+        // Cache l'élément du dom qui représente la tâche
+        this.domElts.articleElt.style.setProperty(
+          "display",
+          "none",
+          "important"
+        );
         // Faire appel au service pour supprimer la tâche sur le serveur (json-server)
-        TaskService.deleteTask(this.id);
-        // Si le delete ne fonctionne pas, on revient à la version précédente de la liste en donnant un message d'erreur
+        TaskService.deleteTask(this.id)
+          .then((data) => {
+            console.log(`promesse tenue`);
+          })
+          .catch((error) => {
+            console.error(
+              `Erreur attrapée lors de l'appel de deleteTask dans le composant Task : ${error}`
+            );
+            setTimeout(() => {
+              this.domElts.articleElt.style.setProperty(
+                "display",
+                "flex",
+                "important"
+              );
+            }, 2000);
+          });
+        // Si le delete ne fonctionne pas, on revient à la version précédente de la liste en donnant un message d'erreur qui sera affiché sur le parent (Todolist) et la méthode préconisée pour ce genre de communication est le design pattern observer
+        // On va se service du service ErrorService pour émettre un notification next
+        ErrorService.getInstance().emitError(
+          "Erreur lors de la suppression en base de données. Veuillez renouveller votre suppression ultérieurement et/ou contacter le service technique : tech@todolist.fr"
+        );
       }
     });
   }
