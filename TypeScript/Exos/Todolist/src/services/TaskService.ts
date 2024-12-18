@@ -41,7 +41,7 @@ export default class TaskService {
 
   static patchTask(partialTask: PartialTaskWithId): Promise<TaskInterface> {
     // Utilisation de la fonction fetch qui utilise les promesses
-    return fetch(TaskService.endpoint + "/qsdf" + partialTask.id, {
+    return fetch(TaskService.endpoint + "/" + partialTask.id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
