@@ -1,12 +1,6 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "Faire la vaisselle",
-      "description": "Et que ça saute",
-      "done": true
-    },
-    {
       "id": "2",
       "title": "Faire du sport",
       "description": "Et que ça saute",

@@ -59,7 +59,24 @@ export default class Task extends Component implements TaskInterface {
     checkbox.addEventListener("change", () => {
       this.done = checkbox.checked;
       console.log(`this.done`, this.done);
+
       // Faire appel au service pour modifier la tâche sur le serveur (json-server)
+      // Pour gérer l'erreur éventuelle lors du patch, je dois gérer le retour aléatoire de la promesse
+      TaskService.patchTask({ id: this.id, done: this.done })
+        .then((patchedTask) => {
+          console.log(`Tâche patchée`, patchedTask);
+        })
+        .catch((error) => {
+          console.log(`Erreur attrapée lors de l'appel de patchTask`);
+
+          ErrorService.getInstance().emitError(
+            "Erreur lors de la modification en base de données. Veuillez renouveller votre modification ultérieurement et/ou contacter le service technique : tech@todolist.fr"
+          );
+          setTimeout(() => {
+            this.done = !this.done;
+            checkbox.checked = !checkbox.checked;
+          }, 1000);
+        });
     });
 
     // Gérer le click sur le bouton supprimer (demander confirmation - utiliser confirm) puis supprimer l'élément du DOM
