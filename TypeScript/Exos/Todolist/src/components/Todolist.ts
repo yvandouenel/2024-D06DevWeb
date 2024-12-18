@@ -2,6 +2,7 @@ import Component from "../utils/Component";
 import ErrorService from "../services/ErrorService";
 import Task from "./Task";
 import TaskInterface from "../interfaces/TaskInterface";
+import FormTask from "./FormTask";
 
 export default class Todolist extends Component {
   title: string;
@@ -19,6 +20,9 @@ export default class Todolist extends Component {
     this.parentElement = parentElement;
     // Souscription au service d'erreur
     this.subscribeErrorNotification();
+
+    // Ajout du formulaire d'ajout de tâche
+    new FormTask(this.parentElement);
 
     // Appel de render dès la construction
     this.domElts = this.render();

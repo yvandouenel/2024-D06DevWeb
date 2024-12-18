@@ -38,7 +38,6 @@ export default class TaskService {
         return data;
       });
   }
-
   static patchTask(partialTask: PartialTaskWithId): Promise<TaskInterface> {
     // Utilisation de la fonction fetch qui utilise les promesses
     return fetch(TaskService.endpoint + "/" + partialTask.id, {
