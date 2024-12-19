@@ -1,0 +1,12 @@
+<div class="d-flex align-items-baseline gap-5">
+  <h2
+    [ngClass]="{
+      'text-decoration-line-through': task.done,
+      'task-not-done': !task.done
+    }"
+  >
+    {{ task.name }}
+  </h2>
+  <span>{{ task?.comment }}</span>
+  <input type="checkbox" [checked]="task.done" (change)="handleCheck(task)" />
+</div>

@@ -1,0 +1,11 @@
+<form
+  [formGroup]="addForm"
+  (ngSubmit)="onSubmit()"
+  class="d-flex gap-3 align-items-center"
+>
+  <input type="text" formControlName="name" placeholder="Jouer aux boules" />
+
+  <button class="btn btn-success" type="submit" [disabled]="!addForm.valid">
+    Ajouter
+  </button>
+</form>
