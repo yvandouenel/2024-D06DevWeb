@@ -1,0 +1,38 @@
+<main class="main">
+  <h1>{{ title }}</h1>
+  <ul>
+    <li *ngFor="let task of tasks">
+      <div style="display: flex; gap: 20px">
+        <h2
+          [ngClass]="{
+            'text-decoration-line-through': task.done,
+            'task-not-done': !task.done
+          }"
+        >
+          {{ task.name }}
+        </h2>
+        <span>{{ task?.comment }}</span>
+      </div>
+    </li>
+  </ul>
+  <p [style.color]="color">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit ipsum aperiam
+    ducimus quidem. Consequuntur blanditiis, dicta aperiam quidem at, aliquam
+    placeat rerum error consectetur laudantium officiis modi quo nam maiores?
+  </p>
+  <select name="" id="">
+    <!-- utilisation d'attributs -->
+    <option selected="true">Cobra</option>
+    <option selected="false">Set</option>
+    <!-- sélectionné -->
+  </select>
+  <select name="" id="">
+    <!-- utilisation de propriétés d'éléments du DOM -->
+    <option [selected]="true">Cobra</option>
+    <option [selected]="false">Set</option>
+    <!-- sélectionné -->
+  </select>
+</main>
+
+<!-- sortie de la route  -->
+<router-outlet />
