@@ -1,6 +1,7 @@
 <main class="main container">
   <h1>{{ title }}</h1>
-  <digi-form-task></digi-form-task>
+  <!-- Souscription à l'observable submited -->
+  <digi-form-task (submited)="handleSubmited($event)"></digi-form-task>
   <ul>
     <li *ngFor="let task of tasks">
       <digi-task [task]="task"></digi-task>

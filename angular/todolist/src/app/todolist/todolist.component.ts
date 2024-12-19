@@ -28,4 +28,14 @@ export class TodolistComponent {
       done: true,
     },
   ];
+  handleSubmited(taskName: string) {
+    console.log(`Récupération de la valeur soumise : `, taskName);
+    const newTask = {
+      id: new Date().toString(),
+      name: taskName,
+      done: false,
+    };
+    // Ajout de cette nouvelle tâche à tasks (tableau de tâches)
+    this.tasks.push(newTask);
+  }
 }
