@@ -72,7 +72,9 @@ export default class Todolist extends Component {
             tasks
           );
           this.tasks = tasks;
-          this.render();
+          setTimeout(() => {
+            this.render();
+          }, 1000);
         },
       });
   }

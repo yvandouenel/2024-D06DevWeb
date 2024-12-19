@@ -5,6 +5,8 @@ export default class TaskService {
   private static endpoint: string = "http://localhost:3000/tasks";
   private static instance: TaskService;
   tasksSubjet = new Subject<TaskInterface[]>();
+
+  // currentTasks joue le rôle de "state", c'est à dire l'état de l'application à partir duquel on peut reconstruire toute l'application
   private currentTasks: TaskInterface[] = [];
   /**
    * Le constructeur privé m'assure qu'aucune instance ne sera créée en dehors de la classe
