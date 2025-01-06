@@ -42,7 +42,12 @@ fromEvent(inputCountry, "input")
   .subscribe({
     next: (countries) => {
       console.log(`countries from rxjs : `, countries);
+      const selectCountries = document.getElementById("select-countries");
+      if (selectCountries) {
+        selectCountries.remove();
+      }
       const select = document.createElement("select");
+      select.setAttribute("id", "select-countries");
       form.appendChild(select);
       countries.forEach((country: Country) => {
         const option = document.createElement("option");
