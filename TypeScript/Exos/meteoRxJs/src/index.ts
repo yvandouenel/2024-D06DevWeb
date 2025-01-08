@@ -69,13 +69,7 @@ fromEvent(inputTown, "input")
         // Affichage de l'option sélectionnée
         const selectedOption = (event.target as HTMLSelectElement)
           .selectedOptions[0];
-        console.log(
-          `clic sur  ${
-            selectedOption.value
-          } - latitude : ${selectedOption.getAttribute(
-            "data-lat"
-          )} - Longitude : ${selectedOption.getAttribute("data-lon")}`
-        );
+
         if (
           selectedOption.getAttribute("data-lat") &&
           selectedOption.getAttribute("data-lon")
@@ -84,37 +78,44 @@ fromEvent(inputTown, "input")
           Fetch.loadWetherForecast(
             selectedOption.getAttribute("data-lat"),
             selectedOption.getAttribute("data-lon")
-          ).then((data) => {
-            console.log(`data Meteo : `, data);
-            let sectionMeteo = document.getElementById("meteo");
-            if (sectionMeteo) sectionMeteo.remove();
-            sectionMeteo = createMarkup("section", document.body, "", {
-              id: "meteo",
-            });
+          )
+            .then((data) => {
+              console.log(`data Meteo : `, data);
+              let sectionMeteo = document.getElementById("meteo");
+              if (sectionMeteo) sectionMeteo.remove();
+              sectionMeteo = createMarkup("section", document.body, "", {
+                id: "meteo",
+              });
 
-            const temperatureElt = createMarkup(
-              "p",
-              sectionMeteo,
-              `Température : ${data.current.temperature_2m} °C`
-            );
-            const wind_speedElt = createMarkup(
-              "p",
-              sectionMeteo,
-              `Vitesse du vent : ${data.current.wind_speed_10m} Km/h`
-            );
-            const wind_directionElt = createMarkup(
-              "p",
-              sectionMeteo,
-              `Direction du vent : ${windDirection(
-                data.current.wind_direction_10m
-              )}`
-            );
-            const cloud_coverElt = createMarkup(
-              "p",
-              sectionMeteo,
-              `Couverture nuageuse : ${data.current.cloud_cover} %`
-            );
-          });
+              const temperatureElt = createMarkup(
+                "p",
+                sectionMeteo,
+                `Température : ${data.current.temperature_2m} °C`
+              );
+              const wind_speedElt = createMarkup(
+                "p",
+                sectionMeteo,
+                `Vitesse du vent : ${data.current.wind_speed_10m} Km/h`
+              );
+              const wind_directionElt = createMarkup(
+                "p",
+                sectionMeteo,
+                `Direction du vent : ${windDirection(
+                  data.current.wind_direction_10m
+                )}`
+              );
+              const cloud_coverElt = createMarkup(
+                "p",
+                sectionMeteo,
+                `Couverture nuageuse : ${data.current.cloud_cover} %`
+              );
+            })
+            .catch((error) => {
+              console.error(
+                `Erreur attrapée dans l'appel de loadWetherForecast`,
+                error
+              );
+            });
         }
       });
     },
