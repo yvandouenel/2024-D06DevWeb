@@ -1,0 +1,19 @@
+{
+    "name": "diginamic/test",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Diginamic\\Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yvandouenel",
+            "email": "y.douenel@coopernet.fr"
+        }
+    ],
+    "require": {}
+}
