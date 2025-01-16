@@ -27,7 +27,7 @@ export class TodolistComponent {
       name: 'Faire le ménage',
       done: true,
     },
-  ];
+  ];  
   handleSubmited(taskName: string) {
     console.log(`Récupération de la valeur soumise : `, taskName);
     const newTask = {
