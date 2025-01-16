@@ -1,0 +1,13 @@
+FROM alpine:latest
+
+# Création du volume
+VOLUME /data
+
+# Copie du script entrypoint dans l'image
+COPY entrypoint.sh /entrypoint.sh
+
+# Rendre le script exécutable
+RUN chmod +x /entrypoint.sh
+
+# Définir le point d'entrée
+ENTRYPOINT ["/entrypoint.sh"]

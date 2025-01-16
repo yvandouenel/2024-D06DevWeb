@@ -1,0 +1,3 @@
+FROM scratch
+ADD nginx-git.tar /
+CMD ["/bin/bash"]
